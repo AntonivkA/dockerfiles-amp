@@ -1,0 +1,14 @@
+FROM cubecoders/ampbase
+
+RUN apt-get update && \
+    sed -i '/ru_UA.UTF-8/s/^# //g' /etc/locale.gen && \
+    locale-gen && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV LANG="ru_UA.UTF-8"
+ENV LANGUAGE="ru_UA:ru"
+ENV LC_ALL="ru_UA.UTF-8"
+
+ENTRYPOINT ["/ampstart.sh"]
+CMD []
